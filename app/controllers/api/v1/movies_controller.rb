@@ -19,6 +19,7 @@ module Api
         @movie = Movie.new(movie_params)
 
         if @movie.save
+          @movie.genres << Genre.where(id: params[:genre_ids])
           render_response(@movie, MovieSerializer,201)
         else
           render json: @movie.errors, status: :unprocessable_entity
@@ -47,8 +48,9 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def movie_params
-          params.require(:movie).permit(:name, :year, :director, :star, :description)
+          params.require(:movie).permit(:name, :year, :director, :star, :description, genre_ids:[])
         end
+
     end
   end
 end
