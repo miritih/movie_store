@@ -9,5 +9,8 @@ class Movie < ApplicationRecord
   has_many :movie_genres
   has_many :genres, through: :movie_genres
 
+  has_many :favorites
+  has_many :users, through: :favorites
+
   accepts_nested_attributes_for :movie_genres, :allow_destroy => true
 end
