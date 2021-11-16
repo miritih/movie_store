@@ -16,6 +16,8 @@ gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem "active_model_serializers", "~> 0.10.10" # ActiveModel::Serializer implementation
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -34,6 +36,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem "annotate" # Annotate Rails classes with schema and routes info
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
