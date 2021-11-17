@@ -26,3 +26,6 @@ Finally run app
 - `DELETE /api/v1/movie/<movie_id>` delets a movie
 2. users Endpoints
 - `POST /api/v1/users` create a new User
+
+Check the API documentation Here:
+ https://app.swaggerhub.com/apis/miriti/MovieStore/1.0.0
