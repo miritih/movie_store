@@ -47,6 +47,23 @@ ActiveAdmin.register Movie do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :year
+      row :director
+      row :star
+      row "# times Favorited" do |m|
+        m.favorites.count
+      end
+      row :description
+      row "genres" do |m|
+        m.genres.map(&:name).uniq
+      end
+
+    end
+  end
+
   controller do
     def create
       @movie = Movie.new(permitted_params[:movie])

@@ -12,8 +12,8 @@ genre = %i[Action Adventure Animation Biography Comedy Crime
            Documentary Drama
            Fantasy History Horror Musical Mystery Romance SciFi Thriller War Western]
 
-Genre.delete_all
-genre.each{|g| Genre.create!(name: g.to_s)}
+# Genre.delete_all
+# genre.each{|g| Genre.create!(name: g.to_s)}
 
-  AdminUser.create!(email: 'admin@admin.com', password: 'password',
-                    password_confirmation: 'password')
+AdminUser.create!(email: 'admin@admin.com', password: 'password',
+                  password_confirmation: 'password')
