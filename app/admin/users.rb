@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   filter :username
   actions :index, :show, :destroy
@@ -23,12 +25,10 @@ ActiveAdmin.register User do
     column '# favorited movies' do |user|
       user.favorites.count
     end
-    actions  defaults: false do |user|
-      item "Delete", admin_user_path(user), method: :delete, class: "member_link", confirm: 'Deleted user forever?'
+    actions defaults: false do |user|
+      item 'Delete', admin_user_path(user), method: :delete, class: 'member_link', confirm: 'Deleted user forever?'
     end
   end
-
-
 
   show do
     h3 "USERNAME: #{user.username}"
@@ -36,5 +36,4 @@ ActiveAdmin.register User do
       div "# favorited movies: #{user.favorites.count}"
     end
   end
-
 end

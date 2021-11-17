@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Movie < ApplicationRecord
   validates :name, length: { maximum: 80 }, allow_blank: false
   validates :year, length: { maximum: 4 }, allow_blank: false
@@ -12,5 +14,5 @@ class Movie < ApplicationRecord
   has_many :favorites, dependent: :delete_all
   has_many :users, through: :favorites, dependent: :delete_all
 
-  accepts_nested_attributes_for :movie_genres, :allow_destroy => true
+  accepts_nested_attributes_for :movie_genres, allow_destroy: true
 end

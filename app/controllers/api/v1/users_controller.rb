@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class UsersController < ApiController
-
-      #POST /users
+      # POST /users
       def create
         user = User.where(username: user_params[:username]).first
         if user
@@ -19,9 +20,7 @@ module Api
 
       def destroy
         user = User.where(username: user_params[:username]).first
-        if user
-          user.destroy
-        end
+        user&.destroy
       end
 
       private
@@ -29,7 +28,6 @@ module Api
       def user_params
         params.require(:user).permit(:username, :role)
       end
-
     end
   end
 end

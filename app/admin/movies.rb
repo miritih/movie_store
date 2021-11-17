@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Movie do
   filter :name
   # See permitted parameters documentation:
@@ -33,13 +35,13 @@ ActiveAdmin.register Movie do
       f.input :name
       f.input :year, label: 'Year', as: :select, collection: (1900..2021).to_a
       f.input :director
-      f.input :star, label: "Main Star"
+      f.input :star, label: 'Main Star'
       f.input :description
       f.input :favorited, input_html: { disabled: true, value: object.favorites.count }
 
-      f.input :genre_ids, label: 'Genres', as: :select, multiple: true, collection: Genre.all, input_html: { value: object.genres }
+      f.input :genre_ids, label: 'Genres', as: :select, multiple: true, collection: Genre.all,
+                          input_html: { value: object.genres }
 
-      # f.input :genre_ids, label: 'Genres', as: :select, collection: Genre.all
     end
 
     actions
@@ -48,18 +50,12 @@ ActiveAdmin.register Movie do
   controller do
     def create
       @movie = Movie.new(permitted_params[:movie])
-      if @movie.save
-        @movie.genres << Genre.where(id: params[:movie][:genre_ids].reject(&:empty?))
-        super
-      else
-        super
-      end
+      @movie.genres << Genre.where(id: params[:movie][:genre_ids].reject(&:empty?)) if @movie.save
+      super
     end
 
     def permitted_params
       params.permit!
     end
   end
-
-
 end
