@@ -6,11 +6,11 @@ class Movie < ApplicationRecord
   validates :description, length: { maximum: 400 }
   validates_uniqueness_of :name
 
-  has_many :movie_genres
-  has_many :genres, through: :movie_genres
+  has_many :movie_genres, dependent: :delete_all
+  has_many :genres, through: :movie_genres, dependent: :delete_all
 
-  has_many :favorites
-  has_many :users, through: :favorites
+  has_many :favorites, dependent: :delete_all
+  has_many :users, through: :favorites, dependent: :delete_all
 
   accepts_nested_attributes_for :movie_genres, :allow_destroy => true
 end

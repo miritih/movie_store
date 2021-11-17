@@ -1,6 +1,6 @@
 module Api
   module V1
-    class MoviesController < ApplicationController
+    class MoviesController < ApiController
       before_action :set_movie, only: [:show, :update, :destroy]
       before_action :set_user, only: [:update]
 

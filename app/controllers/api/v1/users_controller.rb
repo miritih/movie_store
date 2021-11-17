@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < ApiController
 
       #POST /users
       def create
@@ -14,6 +14,13 @@ module Api
           else
             render json: @user.errors, status: :unprocessable_entity
           end
+        end
+      end
+
+      def destroy
+        user = User.where(username: user_params[:username]).first
+        if user
+          user.destroy
         end
       end
 
